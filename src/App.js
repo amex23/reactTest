@@ -155,7 +155,7 @@ export default () => {
           onSlideChange={() => console.log("slide change")}
           className="bg-black"
         >
-          <SwiperSlide className="bg-pink-400">
+          <SwiperSlide className="">
             <Box
               w="100%"
               position="relative"
@@ -163,6 +163,7 @@ export default () => {
               justifyContent="center"
               alignItems="center"
               className="hero"
+              border="none"
             >
               <Image
                 src={hero1}
@@ -280,19 +281,61 @@ export default () => {
               </Flex>
             </Box>
           </SwiperSlide>
-          <SwiperSlide className="bg-red-400">
-            <Box w="100%">
-              <Image src={hero1} className="w-full"></Image>
+          <SwiperSlide className="">
+            <Box
+              w="100%"
+              position="relative"
+              height="auto"
+              justifyContent="center"
+              alignItems="center"
+              className="hero"
+            >
+              <Image
+                src={hero1}
+                backgroundPosition="center"
+                height={{ base: "80vh", md: "auto", lg: "auto" }}
+                z="999"
+                className="w-full "
+                objectFit="cover"
+              ></Image>
             </Box>
           </SwiperSlide>
-          <SwiperSlide className="bg-yellow-400">
-            <Box w="100%">
-              <Image src={hero1} className="w-full"></Image>
+          <SwiperSlide className="">
+            <Box
+              w="100%"
+              position="relative"
+              height="auto"
+              justifyContent="center"
+              alignItems="center"
+              className="hero"
+            >
+              <Image
+                src={hero1}
+                backgroundPosition="center"
+                height={{ base: "80vh", md: "auto", lg: "auto" }}
+                z="999"
+                className="w-full "
+                objectFit="cover"
+              ></Image>
             </Box>
           </SwiperSlide>
-          <SwiperSlide className="bg-red-400">
-            <Box w="100%">
-              <Image src={hero1} className="w-full"></Image>
+          <SwiperSlide className="">
+            <Box
+              w="100%"
+              position="relative"
+              height="auto"
+              justifyContent="center"
+              alignItems="center"
+              className="hero"
+            >
+              <Image
+                src={hero1}
+                backgroundPosition="center"
+                height={{ base: "80vh", md: "auto", lg: "auto" }}
+                z="999"
+                className="w-full "
+                objectFit="cover"
+              ></Image>
             </Box>
           </SwiperSlide>
         </Swiper>
