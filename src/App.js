@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-// import "./App.css";
 import "./App.scss";
 import { useCallback, useState, React } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -307,7 +305,7 @@ export default () => {
           flexDirection="column"
           gap="12"
         >
-          <Security></Security>
+          <TrendingMain></TrendingMain>
 
           <Flex mx="5vw" flexDirection="column">
             <Flex>
@@ -321,7 +319,7 @@ export default () => {
                 Throwback Anime!
               </Text>
             </Flex>
-            <Flex alignItems="center" justifyContent="space-between">
+            <Flex alignItems="center" justifyContent="space-between" gap="4">
               <Box>
                 <Image src={tr1}></Image>
               </Box>
@@ -339,11 +337,10 @@ export default () => {
   );
 };
 
-function Security() {
-  const [currentTabPassword, setCurrentTabPassword] = useState("password");
-  const tabSwitcherPassword = (tabName) => {
-    setCurrentTabPassword(tabName);
-    console.log(tabName);
+function TrendingMain() {
+  const [currentTab, setCurrentTab] = useState("trending");
+  const tabSwitcher = (tabName) => {
+    setCurrentTab(tabName);
   };
   return (
     <Box
@@ -354,22 +351,20 @@ function Security() {
       py="5"
       borderRadius="15"
     >
-      {currentTabPassword === "password" && (
-        <Password tabSwitcherPassword={tabSwitcherPassword} />
-      )}
-      {currentTabPassword === "changePassword" && (
-        <ChangePassword tabSwitcherPassword={tabSwitcherPassword} />
+      {currentTab === "trending" && <Trending tabSwitcher={tabSwitcher} />}
+      {currentTab === "trendinglist" && (
+        <TrendingList tabSwitcher={tabSwitcher} />
       )}
     </Box>
   );
 }
 
-function Password({ tabSwitcherPassword }) {
+function Trending({ tabSwitcher }) {
   return (
     <Box w="100%" marginLeft="5vw">
       <Text
         onClick={() => {
-          tabSwitcherPassword("changePassword");
+          tabSwitcher("trendinglist");
         }}
         cursor="pointer"
         fontSize={{ base: "2xl", md: "4xl", lg: "4xl" }}
@@ -393,7 +388,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img1}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -402,7 +397,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img2}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -411,7 +406,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img1}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -420,7 +415,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img2}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -429,7 +424,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img1}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -438,7 +433,7 @@ function Password({ tabSwitcherPassword }) {
           <Image
             src={img1}
             onClick={() => {
-              tabSwitcherPassword("changePassword");
+              tabSwitcher("trendinglist");
             }}
             cursor="pointer"
           ></Image>
@@ -448,12 +443,12 @@ function Password({ tabSwitcherPassword }) {
   );
 }
 
-function ChangePassword({ tabSwitcherPassword }) {
+function TrendingList({ tabSwitcher }) {
   return (
-    <Flex w="100%" px="5vw" flexDirection="column">
+    <Flex w="100%" px="5vw" flexDirection="column" gap="4">
       <Text
         onClick={() => {
-          tabSwitcherPassword("password");
+          tabSwitcher("trending");
         }}
         cursor="pointer"
         fontSize={{ base: "2xl", md: "4xl", lg: "4xl" }}
@@ -463,13 +458,17 @@ function ChangePassword({ tabSwitcherPassword }) {
       >
         Trending <span className="t-yellow"> this week</span>
       </Text>
-      <Flex>
-        <Flex w="40%" gap="4" flexDirection="column">
+      <Flex gap="5" flexDirection={{ base: "column", md: "row", lg: "row" }}>
+        <Flex
+          w={{ base: "100%", md: "40%", lg: "40%" }}
+          gap="4"
+          flexDirection="column"
+        >
           <Box>
             <Image
               src={tred1}
               onClick={() => {
-                tabSwitcherPassword("password");
+                tabSwitcher("trending");
               }}
               cursor="pointer"
             ></Image>
@@ -477,16 +476,22 @@ function ChangePassword({ tabSwitcherPassword }) {
           <Box paddingLeft="10px">
             <Text color="#747474">
               When man-eating Titans first appeared 100 years ago, humans found{" "}
-              <br></br>
+              <br className="hidden md:block"></br>
               safety behind massive walls that stopped the giants in their
-              tracks. <br></br>But the safety they have had for so long is
-              threatened when a colossal<br></br> Titan smashes through the
-              barriers, causing a flood of the giants into<br></br> what had
-              been the human…
+              tracks. <br className="hidden md:block"></br>But the safety they
+              have had for so long is threatened when a colossal
+              <br className="hidden md:block"></br> Titan smashes through the
+              barriers, causing a flood of the giants into
+              <br className="hidden md:block"></br> what had been the human…
             </Text>
           </Box>
         </Flex>
-        <Flex w="60%" flexDirection="column" gap="8">
+        <Flex
+          w={{ base: "100%", md: "60%", lg: "60%" }}
+          flexDirection="column"
+          gap="8"
+          px="0"
+        >
           <Flex justifyContent="space-between">
             <Text fontSize="xl" fontWeight="bold" color="white">
               Episodes
